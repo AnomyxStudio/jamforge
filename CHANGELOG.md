@@ -41,3 +41,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Fixes
 - NPE fixes for GameProcedures / StateMachineRunner
 - Should create procedure from Type.FullName
+
+## [0.1.7] - 2024-12-03
+### Features
+- Introduced a serializable `Blackboard`
+- Introduced a `Timer` and `TimerComponent` for easy timer management
+- Introduced `Monad` utils for easy optional result handling
+
+### Chores
+- Bump `MessagePipe`, `MessagePipe.VContainer` to `1.8.1`
+- Bump `VContainer` to `1.16.6`
+- Bump `Unitask` to `2.5.10`
+- Add more commented examples in Github repo
