@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Scripting;
 
 namespace JamForge.StateMachine
@@ -21,7 +22,6 @@ namespace JamForge.StateMachine
     [Preserve]
     public class StateMachineRunner<TIndex, TState> : IDisposable, IStateMachineRunner<TIndex, TState>
         where TState : IState
-        where TIndex : IEquatable<TIndex>
     {
         public TIndex ActiveStateIndex { get; private set; }
 
@@ -52,10 +52,7 @@ namespace JamForge.StateMachine
                 state.Enter();
             }
 
-            if (ActiveStateIndex == null)
-            {
-                throw new Exception("State machine has no initial state");
-            }
+            if (ActiveStateIndex == null) { throw new Exception("State machine has no initial state"); }
         }
 
         public void Run(float deltaTime)
@@ -79,20 +76,20 @@ namespace JamForge.StateMachine
         {
             if (States.TryAdd(index, state)) { return; }
 
-            InternalLog.Error($"State machine already contains state with index {index}");
+            Debug.LogError($"State machine already contains state with index {index}");
         }
 
         public void AddTransition(TIndex from, TIndex to, Func<TState, bool> condition)
         {
             if (!States.TryGetValue(from, out _))
             {
-                InternalLog.Error($"State machine does not contain state with index {from}");
+                Debug.LogError($"State machine does not contain state with index {from}");
                 return;
             }
 
             if (!States.TryGetValue(to, out _))
             {
-                InternalLog.Error($"State machine does not contain state with index {to}");
+                Debug.LogError($"State machine does not contain state with index {to}");
                 return;
             }
 
