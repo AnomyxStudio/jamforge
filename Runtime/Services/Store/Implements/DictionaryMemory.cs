@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using JamForge.Serialization;
 using JetBrains.Annotations;
 using VContainer;
 
@@ -52,15 +51,9 @@ namespace JamForge.Store
         {
             public string StoreName { get; set; }
             
-            private readonly List<IDictionary> _dictionaries;
-            private readonly Dictionary<Type, IDictionary> _typedDictionaries;
+            private readonly List<IDictionary> _dictionaries = new();
+            private readonly Dictionary<Type, IDictionary> _typedDictionaries = new();
             // private readonly Dictionary<string, byte[]> _store;
-
-            public DictionaryMemoryStore()
-            {
-                _dictionaries = new();
-                _typedDictionaries = new();
-            }
 
             public void Set<T>(string key, T value)
             {
@@ -79,6 +72,20 @@ namespace JamForge.Store
                 throw new KeyNotFoundException($"Key {key} not found");
             }
 
+            public bool Has(string key)
+            {
+                for (var i = 0; i < _dictionaries.Count; i++)
+                {
+                    var dictionary = _dictionaries[i];
+                    if (dictionary.Contains(key))
+                    {
+                        return true;
+                    }
+                }
+                
+                return false;
+            }
+
             public bool Has<T>(string key)
             {
                 var typedDictionary = GetOrCreateDictionary<T>();
@@ -95,6 +102,21 @@ namespace JamForge.Store
 
                 value = default;
                 return false;
+            }
+
+            public bool Delete(string key)
+            {
+                for (var i = 0; i < _dictionaries.Count; i++)
+                {
+                    var dictionary = _dictionaries[i];
+                    if(dictionary.Contains(key))
+                    {
+                        dictionary.Remove(key);
+                        return true;
+                    }
+                }
+
+                return true;
             }
 
             public bool Delete<T>(string key)

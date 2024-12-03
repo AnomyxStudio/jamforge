@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace JamForge.Resolver
 {
@@ -18,12 +17,12 @@ namespace JamForge.Resolver
 
         public void InjectGameObject(GameObject gameObject);
 
-        public T Instantiate<T>(T prefab) where T : Object;
+        public T Instantiate<T>(T prefab) where T : Component;
 
-        public T Instantiate<T>(T prefab, Transform parent) where T : Object;
+        public T Instantiate<T>(T prefab, Transform parent) where T : Component;
 
-        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation) where T : Object;
+        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation) where T : Component;
 
-        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent) where T : Object;
+        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent) where T : Component;
     }
 }

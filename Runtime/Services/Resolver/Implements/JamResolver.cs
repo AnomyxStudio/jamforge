@@ -2,11 +2,10 @@
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using Object = UnityEngine.Object;
 
 namespace JamForge.Resolver
 {
-    public class JamResolver : IJamResolver
+    public class JamResolver: IJamResolver
     {
         private readonly IObjectResolver _resolver;
 
@@ -77,25 +76,25 @@ namespace JamForge.Resolver
         }
 
         [UnityEngine.Scripting.Preserve]
-        public T Instantiate<T>(T prefab) where T : Object
+        public T Instantiate<T>(T prefab) where T : Component
         {
             return _resolver.Instantiate(prefab);
         }
 
         [UnityEngine.Scripting.Preserve]
-        public T Instantiate<T>(T prefab, Transform parent) where T : Object
+        public T Instantiate<T>(T prefab, Transform parent) where T : Component
         {
             return _resolver.Instantiate(prefab, parent);
         }
 
         [UnityEngine.Scripting.Preserve]
-        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation) where T : Object
+        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation) where T : Component
         {
             return _resolver.Instantiate(prefab, position, rotation);
         }
 
         [UnityEngine.Scripting.Preserve]
-        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent) where T : Object
+        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent) where T : Component
         {
             return _resolver.Instantiate(prefab, position, rotation, parent);
         }

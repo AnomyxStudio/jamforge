@@ -138,6 +138,12 @@ namespace JamForge.Store
                 return _json.From<T>(PlayerPrefs.GetString(key));
             }
 
+            public bool Has(string key)
+            {
+                key = ProcessKey(key);
+                return PlayerPrefs.HasKey(key);
+            }
+
             public bool Has<T>(string key)
             {
                 key = ProcessKey(key);
@@ -155,6 +161,16 @@ namespace JamForge.Store
 
                 value = default;
                 return false;
+            }
+
+            public bool Delete(string key)
+            {
+                key = ProcessKey(key);
+                if (!Has(key)) { return false; }
+
+                PlayerPrefs.DeleteKey(key);
+                PlayerPrefs.Save();
+                return true;
             }
 
             public bool Delete<T>(string key)
