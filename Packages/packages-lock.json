@@ -1,29 +1,13 @@
 {
   "dependencies": {
     "com.anomyx.jamforge": {
-      "version": "file:com.anomalybound.jamforge",
+      "version": "file:com.anomyx.jamforge",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
         "jp.hadashikick.vcontainer": "1.13.2",
-        "com.cysharp.messagepipe": "1.7.4",
-        "com.cysharp.messagepipe.vcontainer": "1.7.4",
         "com.cysharp.unitask": "2.3.3"
       }
-    },
-    "com.cysharp.messagepipe": {
-      "version": "1.8.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
-    },
-    "com.cysharp.messagepipe.vcontainer": {
-      "version": "1.8.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
     },
     "com.cysharp.unitask": {
       "version": "2.5.10",
@@ -75,7 +59,7 @@
       }
     },
     "jp.hadashikick.vcontainer": {
-      "version": "1.16.6",
+      "version": "1.16.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

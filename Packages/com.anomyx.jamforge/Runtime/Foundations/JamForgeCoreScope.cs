@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using JamForge.Audio;
 using JamForge.Events;
 using JamForge.Logging;
+using JamForge.Messages;
 using JamForge.Resolver;
 using JamForge.Serialization;
 using JamForge.Store;
-using MessagePipe;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -27,13 +27,8 @@ namespace JamForge
             // Includes IEventBrokerFacade, IAsyncEventBroker, IStickyEventBroker, IEventBroker
             builder.Register<EventBroker>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
 
-            // MessagePipe
-            builder.RegisterMessagePipe(cfg =>
-            {
-                cfg.RequestHandlerLifetime = InstanceLifetime.Singleton;
-                cfg.DefaultAsyncPublishStrategy = AsyncPublishStrategy.Parallel;
-            });
-            builder.RegisterBuildCallback(c => GlobalMessagePipe.SetProvider(c.AsServiceProvider()));
+            // MessageCenter
+            builder.Register<IMessageCenter, MessageCenter>(Lifetime.Singleton);
 
             // Serialization
             builder.Register<IJsonSerializer, CatJsonSerializer>(Lifetime.Singleton);

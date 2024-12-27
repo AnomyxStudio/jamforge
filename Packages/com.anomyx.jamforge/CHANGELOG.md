@@ -53,3 +53,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Bump `VContainer` to `1.16.6`
 - Bump `Unitask` to `2.5.10`
 - Add more commented examples in Github repo
+
+## 【0.1.8】 - 2024-12-28
+### Refactor
+- Refactor `MessagePipe` and `MessagePipe.VContainer` to a simpler `MessageCenter`
+
+### Chores
+- Remove `MessagePipe` and `MessagePipe.VContainer` packages
+- Bump `VContainer` to `1.16.7`

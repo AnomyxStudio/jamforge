@@ -1,4 +1,6 @@
-public class GameStartMessage
+using JamForge.Messages;
+
+public class GameStartMessage : IMessage
 {
     public string GameName { get; }
 

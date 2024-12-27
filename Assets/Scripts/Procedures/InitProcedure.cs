@@ -1,21 +1,13 @@
-﻿using MessagePipe;
-using UnityEngine.Scripting;
+﻿using UnityEngine.Scripting;
 
 namespace JamForge.Samples
 {
     [Preserve]
     public class InitProcedure : ProcedureBase
     {
-        private IPublisher<GameStartMessage> GameStartPublisher { get; }
-
-        public InitProcedure(IPublisher<GameStartMessage> gameStartPublisher)
-        {
-            GameStartPublisher = gameStartPublisher;
-        }
-
         protected override void OnEnter()
         {
-            GameStartPublisher.Publish(new GameStartMessage("Game Sample"));
+            Jam.Messages.Publish(new GameStartMessage("Game Sample"));
             Jam.Logger.Debug($"Initial procedure entered.");
         }
 
